@@ -13,42 +13,194 @@
 
 		<div class="container">
 
-			<h1>
-				Sect: Tutorial
-			</h1>
-
-			<p class="well">
-				This is a tutorial for Sect.<br/>
-				<br/>
-				Other Links:<br/>
-				<a class="btn btn-primary btn-md" href="commands.html">Commands List</a>
-				<a class="btn btn-warning btn-md" href="https://github.com/strangewarp/Sect">Source Code</a>
-			</p>
-
 			<br/>
 
-			<div class="panel panel-primary">
+			<div class="jumbotron">
+
+				<h1>
+					Sect: Tutorial
+				</h1>
+
+				<br/>
+
+				<p class="text">
+					This is a tutorial for Sect.<br/>
+					<br/>
+					Useful Links:
+					<a class="btn btn-primary btn-lg" href="commands.html">Commands List</a>
+					<a class="btn btn-warning btn-lg" href="https://github.com/strangewarp/Sect">Source Code</a>
+				</p>
+
+			</div>
+
+			<div class="panel panel-default">
 				<div class="panel-heading">
 					<h4>
 						Welcome!
 					</h4>
 				</div>
 				<div class="panel-body">
-					This will be a short tutorial on Sect's commands and functions.<br/>
-					<br/>
-					It is designed to help users reach a point where they can use Sect for music composition, and customize their key-commands and user-themes if they so wish.
+					<p class="text">
+						This will be a short tutorial on Sect's commands and functions.<br/>
+						<br/>
+						It is designed to help users reach a point where they can use Sect for music composition, and customize their key-commands and user-themes if they so wish.
+					</p>
 				</div>
 			</div>
 
-			<div class="panel panel-info">
+			<div class="panel panel-default">
+
 				<div class="panel-heading">
 					<h4>
 						Downloading and Running
 					</h4>
 				</div>
+
 				<div class="panel-body">
-					Todo!
+
+					<div class="row">
+
+						<div class="col-lg-4">
+							<div class="well well-lg">
+
+								<div class="alert alert-warning" style="text-align:center;">
+									<h5>
+										<b>Linux</b>
+									</h5>
+								</div>
+
+								<p class="text-warning">
+									First, download and install <a href="http://love2d.org/">LOVE2D</a>.<br/>
+									<br/>
+									Second, download and install <a href="http://puredata.info/downloads/pd-extended">Pd-extended</a>.<br/>
+									<br/>
+									Third, download <a href="">Sect_0.1.love</a>, and place it in whichever dir you prefer.<br/>
+									<br/>
+									Finally, run Sect_0.1.love. LOVE2D ought to run it automatically as a LOVE2D application.
+								</p>
+
+								<div class="alert alert-danger">
+									<h5>
+										Warning!
+									</h5>
+									<p>
+										Some Linux distros will have problems installing Pd-extended, and/or running LOVE2D programs. This is largely uncharted territory, alas.
+									</p>
+								</div>
+
+							</div>
+						</div>
+
+						<div class="col-lg-4">
+							<div class="well well-lg">
+
+								<div class="alert alert-success" style="text-align:center;">
+									<h5>
+										<b>Mac OS X</b>
+									</h5>
+								</div>
+
+								<p class="text text-success">
+									First, download and install <a href="http://puredata.info/downloads/pd-extended">Pd-extended</a>.<br/>
+									<br/>
+									Second, download <a href="">Sect_0.1.app</a>.<br/>
+									<br/>
+									Finally, place Sect_0.1.app in whichever folder you prefer, and run it.
+								</p>
+
+							</div>
+						</div>
+
+						<div class="col-lg-4">
+							<div class="well well-lg">
+
+								<div class="alert alert-success" style="text-align:center;">
+									<h5>
+										<b>Windows</b>
+									</h5>
+								</div>
+
+								<p class="text text-success">
+									First, download and install <a href="http://puredata.info/downloads/pd-extended">Pd-extended</a>.<br/>
+									<br/>
+									Second, download <a href="">Sect.zip</a>.<br/>
+									<br/>
+									Third, extract Sect.zip, and place its contents in whichever folder you prefer, but make sure to keep all of its EXE and DLL files in the same folder as one another.<br/>
+									<br/>
+									Finally, double-click Sect_0.1.exe and run it.
+								</p>
+
+							</div>
+						</div>
+
+					</div>
+
+					<p class="text">
+						You should see a loading screen as Sect generates its data files; this might take a few seconds, but it will be faster on all subsequent launches.<br/>
+						<br/>
+						After the loading screen is done, this window should appear:<br/>
+						<br/>
+						<img src="img/screen1.png" /><br/>
+						<br/>
+						<span class="label label-success">Success!</span> Now let's write some music.
+					</p>
+
 				</div>
+
+			</div>
+
+			<div class="panel panel-default">
+
+				<div class="panel-heading">
+					<h4>
+						Making Our First MIDI Sequence
+					</h4>
+				</div>
+
+				<div class="panel-body">
+
+					<p class="text">
+						To create a new sequence, hit <b>Shift-Enter</b>. This will bring up many new elements in the Sequence-Grid panel.<br/>
+						<br/>
+						Without annotations:<br/>
+						<br/>
+						<img src="img/screen2.png" /><br/>
+						<br/>
+						With annotations:<br/>
+						<br/>
+						<img src="img/screen3.png" /><br/>
+						<br/>
+						<b>A:</b> Active note. C-0 corresponds to MIDI-NOTE 0; G-10 corresponds to MIDI-NOTE 127.<br/>
+						<br>
+						<b>B:</b> Active tick. A tick is a sub-unit of a beat. The default value is 24 TPQ (Ticks Per Quaver), making for 96 ticks per beat.<br/>
+						<br/>
+						<b>C:</b> Reticule. This marks the location where the active note and the active tick meet. Its rightmost triangle, which falls to the right of circle "C" in the example image, shows how long a note would be if it were created.<br/>
+						<br/>
+						The reticule's default colors are: bright aqua while recording in Play Mode; mellow blue and white when not recording in Play Mode; bright yellow when recording in Generator Mode; and dusky yellow-brown when not recording in Generator Mode. You'll learn about modes later on.<br/>
+						<br/>
+						<b>D:</b> Active sequence.<br/>
+						<br/>
+						<b>E:</b> List of all currently-loaded sequences. Each sequence corresponds to a MIDI track. This panel is clickable!<br/>
+						<br/>
+						<b>F:</b> Beat-triangle. These triangles are attached to each beat-tick, and show which beat it is. Since we've just created a new sequence, all beat-triangles in the example image are labeled "1", as the new sequence is only 1 beat long.<br/>
+						<br/>
+						<b>G:</b> Currently playable notes. These correspond to a piano-layout on the letter keys of your keyboard, and they will jump upwards or downwards depending on which octave the Reticule is in.<br/>
+						<br/>
+						Here's the default layout for the keyboard-piano:<br/>
+						<br/>
+						<img src="img/screen4.png" /><br/>
+						<br/>
+						You can use these keys to enter any of the currently playable notes. Or, you can hit <b>Enter</b> to enter the active note.<br/>
+						<br/>
+						So, let's enter some notes!<br/>
+						<br/>
+						<img src="img/screen5.png" /><br/>
+						<br/>
+
+					</p>
+
+				</div>
+
 			</div>
 
 
