@@ -142,7 +142,7 @@
 						<br/>
 						<img src="img/screen1.png" /><br/>
 						<br/>
-						<span class="label label-success">Success!</span> Now let's write some music.
+						<span class="label label-success">Success!</span> Now let's set up the personalized settings, for save-load location and color theme.
 					</p>
 
 				</div>
@@ -153,13 +153,123 @@
 
 				<div class="panel-heading">
 					<h4>
-						Making Our First MIDI Sequence
+						Changing The Default Settings
 					</h4>
 				</div>
 
 				<div class="panel-body">
 
 					<p class="text">
+						Now that Sect has generated its data-files, we have to edit them slightly, so that Sect's internal save-load directory is correct.<br/>
+						<br/>
+						Close Sect itself, and...<br/>
+						<br/>
+
+						<div class="row">
+
+							<div class="col-lg-4">
+								<div class="well well-lg">
+
+									<div class="alert alert-warning" style="text-align:center;">
+										<h5>
+											<b>Linux</b>
+										</h5>
+									</div>
+
+									<p class="text-warning">
+										Go to ~/.sect, and open user-prefs.lua in a text editor.
+									</p>
+
+								</div>
+							</div>
+
+							<div class="col-lg-4">
+								<div class="well well-lg">
+
+									<div class="alert alert-success" style="text-align:center;">
+										<h5>
+											<b>Mac OS X</b>
+										</h5>
+									</div>
+
+									<p class="text text-success">
+										Go to ~/Library/Application Support/sect, and open user-prefs.lua in a text editor.
+									</p>
+
+								</div>
+							</div>
+
+							<div class="col-lg-4">
+								<div class="well well-lg">
+
+									<div class="alert alert-success" style="text-align:center;">
+										<h5>
+											<b>Windows</b>
+										</h5>
+									</div>
+
+									<p class="text text-success">
+										Go to C:/Users/<i>Username</i>/AppData/Roaming/sect, and open user-prefs.lua in a text editor.
+									</p>
+
+								</div>
+							</div>
+
+						</div>
+
+						Inside this file, search for the line...<br/>
+						<br/>
+						<i>savepath = "C:/Users/Christian/Documents/MUSIC_STAGING/",</i><br/>
+						<br/>
+						...And change it to the directory that you want your MIDI savefiles to reside in. If you don't do this, it will try to save it in the directory I use in development, and I'm pretty sure you're not me! Also - make sure that when you change this line, you leave the quotes and comma alone, of course.<br/>
+						<br/>
+						Save the file, and close.<br/>
+						<br/>
+
+						<div class="row">
+							<div class="col-lg-5">
+								<div class="alert alert-info">
+									<h5>
+										<b>Note:</b>
+									</h5>
+									<p>
+										In user-prefs.lua, you can also change:<br/>
+										<ul>
+											<li>Hotseat names</li>
+											<li>Undo depth</li>
+											<li>Keyboard-piano keys</li>
+											<li>Command keychords</li>
+											<li>OSC port</li>
+											<li>Theme colors</li>
+											<li>Fonts</li>
+											<li>Background images</li>
+											<li>Element sizes</li>
+										</ul>
+										...But you don't have to be concerned about any of those, especially not right now. Just remember that there are a lot of possibilities here.
+									</p>
+								</div>
+							</div>
+						</div>
+
+					</p>
+
+				</div>
+
+			</div>
+
+			<div class="panel panel-default">
+
+				<div class="panel-heading">
+					<h4>
+						Making Your First MIDI Sequence
+					</h4>
+				</div>
+
+				<div class="panel-body">
+
+					<p class="text">
+						Open up Sect again.<br/>
+						<br/>
 						To create a new sequence, hit <b>Shift-Enter</b>. This will bring up many new elements in the Sequence-Grid panel.<br/>
 						<br/>
 						Without annotations:<br/>
@@ -170,21 +280,21 @@
 						<br/>
 						<img src="img/screen3.png" /><br/>
 						<br/>
-						<b>A:</b> Active note. C-0 corresponds to MIDI-NOTE 0; G-10 corresponds to MIDI-NOTE 127.<br/>
+						<b>A</b> - Active note. C-0 corresponds to MIDI-NOTE 0; G-10 corresponds to MIDI-NOTE 127.<br/>
 						<br>
-						<b>B:</b> Active tick. A tick is a sub-unit of a beat. The default value is 24 TPQ (Ticks Per Quaver), making for 96 ticks per beat.<br/>
+						<b>B</b> - Active tick. A tick is a sub-unit of a beat. The default value is 24 TPQ (Ticks Per Quaver), making for 96 ticks per beat.<br/>
 						<br/>
-						<b>C:</b> Reticule. This marks the location where the active note and the active tick meet. Its rightmost triangle, which falls to the right of circle "C" in the example image, shows how long a note would be if it were created.<br/>
+						<b>C</b> - Reticule. This marks the location where the active note and the active tick meet. Its rightmost triangle, which falls to the right of circle "C" in the example image, shows how long a note would be if it were created.<br/>
 						<br/>
 						The reticule's default colors are: bright aqua while recording in Play Mode; mellow blue and white when not recording in Play Mode; bright yellow when recording in Generator Mode; and dusky yellow-brown when not recording in Generator Mode. You'll learn about modes later on.<br/>
 						<br/>
-						<b>D:</b> Active sequence.<br/>
+						<b>D</b> - Active sequence.<br/>
 						<br/>
-						<b>E:</b> List of all currently-loaded sequences. Each sequence corresponds to a MIDI track. This panel is clickable!<br/>
+						<b>E</b> - List of all currently-loaded sequences. Each sequence corresponds to a MIDI track. This panel is clickable!<br/>
 						<br/>
-						<b>F:</b> Beat-triangle. These triangles are attached to each beat-tick, and show which beat it is. Since we've just created a new sequence, all beat-triangles in the example image are labeled "1", as the new sequence is only 1 beat long.<br/>
+						<b>F</b> - Beat-triangle. These triangles are attached to each beat-tick, and show which beat it is. Since we've just created a new sequence, all beat-triangles in the example image are labeled "1", as the new sequence is only 1 beat long.<br/>
 						<br/>
-						<b>G:</b> Currently playable notes. These correspond to a piano-layout on the letter keys of your keyboard, and they will jump upwards or downwards depending on which octave the Reticule is in.<br/>
+						<b>G</b> - Currently playable notes. These correspond to a piano-layout on the letter keys of your keyboard, and they will jump upwards or downwards depending on which octave the Reticule is in.<br/>
 						<br/>
 						Here's the default layout for the keyboard-piano:<br/>
 						<br/>
@@ -192,18 +302,50 @@
 						<br/>
 						You can use these keys to enter any of the currently playable notes. Or, you can hit <b>Enter</b> to enter the active note.<br/>
 						<br/>
-						So, let's enter some notes!<br/>
+						So, let's navigate to your octave of choice with <b>Up</b>, <b>Down</b>, <b>Shift-Up</b> and <b>Shift-Down</b>, and enter some notes!<br/>
 						<br/>
 						<img src="img/screen5.png" /><br/>
 						<br/>
-
+						But what's this? The sequence is so short that you could only enter four notes! Well, worry not: there are commands to give you various types of control here.<br/>
+						<br/>
+						First, we need to shorten those notes. Hit <b>Ctrl-A</b> for Select-All, then <b>Shift-Tab-Left</b> a few times to shorten their duration.<br/>
+						<br/>
+						Okay, I lied. Use <b>Shift-Tab-Right</b> to lengthen them again, and <b>Ctrl-Shift-A</b> to clear selection.<br/>
+						<br/>
+						You could make a ridiculously quick sequence by reducing Spacing (<b>Semicolon</b>, <b>Apostrophe</b>, <b>Shift-Semicolon</b>, <b>Shift-Apostrophe</b>) and Duration (<b>Square brackets</b>, <b>Shift-Square brackets</b>), or a sequence with slower notes by moving them in the other direction.<br/>
+						<br/>
+						But how do we lengthen the sequence itself, to hold more notes? To add a number of ticks equal to the Spacing value, hit <b>Tab-Enter</b>. Note that, if you do this in the middle of a sequence that contains notes, the notes to the right of the Reticule will be pushed forward.<br/>
+						<br/>
+						Change the notes' MIDI channel with <b>Ctrl-Square brackets</b>, their velocity with <b>dash</b>, <b>equals</b>, <b>Shift-dash</b>, <b>Shift-equals</b>, and play around putting a sequence together.<br/>
+						<br/>
+						So now that we have a sequence, how do we save it?<br/>
+						<br/>
+						<b>Ctrl-S</b> will save it to the current hotseat. You can tab between hotseats with <b>Ctrl-number</b> and <b>Shift-Number</b>, and load the hotseat-file's contents with <b>Ctrl-O</b>.<br/>
+						<br/>
+						Remember that hotseat filenames can be changed in your user-prefs.lua.<br/>
 					</p>
 
 				</div>
 
 			</div>
 
+			<div class="panel panel-default">
 
+				<div class="panel-heading">
+					<h4>
+						Sending Example-Notes
+					</h4>
+				</div>
+
+				<div class="panel-body">
+
+					<p class="text">
+
+					</p>
+
+				</div>
+
+			</div>
 
 		</div>
 
