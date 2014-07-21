@@ -104,8 +104,31 @@
 								<p class="text text-success">
 									First, download and install <a href="http://puredata.info/downloads/pd-extended">Pd-extended</a>.<br/>
 									<br/>
-									Second, download <a href="">Sect.zip</a>.<br/>
-									<br/>
+									Second, download...
+								</p>
+									<div class="row">
+										<div class="col-lg-6">
+											<div class="well well-sm" style="text-align:center;">
+												<h5 class="text-success">
+													<b>32-bit</b>
+												</h5>
+												<p class="text text-success">
+													<a href="">Sect-win32.zip</a>.
+												</p>
+											</div>
+										</div>
+										<div class="col-lg-6">
+											<div class="well well-sm" style="text-align:center;">
+												<h5 class="text-success">
+													<b>64-bit</b>
+												</h5>
+												<p class="text text-success">
+													<a href="">Sect-win64.zip</a>.
+												</p>
+											</div>
+										</div>
+									</div>
+								<p class="text text-success">
 									Third, extract Sect.zip, and place its contents in whichever folder you prefer, but make sure to keep all of its EXE and DLL files in the same folder as one another.<br/>
 									<br/>
 									Finally, double-click Sect_0.1.exe and run it.
@@ -156,7 +179,7 @@
 									</h5>
 
 									<p class="text-warning">
-										Go to ~/.sect, and open user-prefs.lua in a text editor.
+										Go to ~/.sect, and open "user-prefs.lua" in a text editor.
 									</p>
 
 								</div>
@@ -170,7 +193,7 @@
 									</h5>
 
 									<p class="text text-success">
-										Go to ~/Library/Application Support/sect, and open user-prefs.lua in a text editor.
+										Go to ~/Library/Application Support/sect, and open "user-prefs.lua" in a text editor.
 									</p>
 
 								</div>
@@ -184,7 +207,7 @@
 									</h5>
 
 									<p class="text text-success">
-										Go to C:/Users/<i>Username</i>/AppData/Roaming/sect, and open user-prefs.lua in a text editor.
+										Go to C:/Users/<i>Username</i>/AppData/Roaming/sect, and open "user-prefs.lua" in a text editor.
 									</p>
 
 								</div>
@@ -196,7 +219,9 @@
 						<br/>
 						<i>savepath = "C:/Users/Christian/Documents/MUSIC_STAGING/",</i><br/>
 						<br/>
-						...And change it to the directory that you want your MIDI savefiles to reside in. If you don't do this, it will try to save it in the directory I use in development, and I'm pretty sure you're not me! Also - make sure that when you change this line, you leave the quotes and comma alone, of course.<br/>
+						...And change it to the directory that you want your MIDI savefiles to reside in. If you don't do this, it will try to save it in the directory I use for development; the chances that this default directory will work for you are minimal.<br/>
+						<br/>
+						Make sure that when you change this line, you leave the quotes, comma, and equals-sign the same, or else it will break the Lua table's syntax.<br/>
 						<br/>
 						Save the file, and close.<br/>
 						<br/>
@@ -315,16 +340,39 @@
 				<div class="panel-body">
 
 					<p class="text">
-						You may have noticed that, so far, Sect is silent. Well, there's a decent way to fix this.<br/>
+						You may have noticed that, so far, Sect is silent. Because of LOVE2D's limitations, Sect cannot route MIDI on its own, but there is a Puredata script to help.<br/>
 						<br/>
-						Because of LOVE2D' limitations, Sect cannot send MIDI directly, but there is a Puredata script to help.<br/>
-						<br/>
-						Download <a href="https://github.com/strangewarp/SectTestOSCMIDI">SectTestOSCMIDI</a> and open it in Pd-extended.<br/>
+						Download <a href="https://github.com/strangewarp/SectTestOSCMIDI">SectTestOSCMIDI</a>, and open "test-osc.pd" with Pd-extended. You should see this:<br/>
 						<br/>
 						<img src="img/screen6.png" /><br/>
 						<br/>
-
+						For Puredata to send MIDI notes itself, we have to change its MIDI settings.<br/>
+						<br/>
+						Go to Pd-extended's main window, open the "Media" menu, and select "MIDI Settings..."<br/>
+						<br/>
+						<img src="img/screen7.png" /><br/>
+						<br/>
+						A tiny window will appear.<br/>
+						<br/>
+						<img src="img/screen8.png" /><br/>
+						<br/>
+						Click the box to the right of "Output device 1", and a menu will pop up, displaying all currently-existing MIDI devices. Select your device of choice from the list; then, click "Apply" and "OK".<br/>
+						<br/>
+						Sect should now send MIDI-NOTEs to that MIDI device, as long as both Sect and test-osc.pd are running at the same time.
 					</p>
+
+					<div class="row">
+						<div class="col-lg-5">
+							<div class="alert alert-info">
+								<h5>
+									<b>Note:</b>
+								</h5>
+								<p>
+									If you have changed the "oscsend" port in user-prefs.lua, you will have to enter the corresponding port-number into test-osc.pd's "OSC-IN port" number-box when the script is launched.
+								</p>
+							</div>
+						</div>
+					</div>
 
 				</div>
 
@@ -341,9 +389,36 @@
 				<div class="panel-body">
 
 					<p class="text">
-
-						todo: Undo/Redo
-						todo: Additive Copypaste
+						Now that you have all of the basics down, it's time to learn a few helpful advanced techniques.<br/>
+						<br/>
+						Undo and Redo are <b>Ctrl-Z</b> and <b>Ctrl-Y</b>, respectively.<br/>
+						<br/>
+						The default depth of undo-memory is 100 steps, but you can change this in user-prefs.lua.<br/>
+						<br/>
+						A selection-window can be created with <b>Ctrl-Comma</b> and <b>Ctrl-Period</b>, and dismissed with <b>Ctrl-Slash</b>. All notes whose first tick falls within this window will be highlighted as the current selection.<br/>
+						<br/>
+						Copy is <b>Ctrl-C</b>, Cut is <b>Ctrl-X</b>, and Paste is <b>Ctrl-V</b>. Copy and Cut act upon the currently-highlighted notes.<br/>
+						<br/>
+						Notes will be copied/pasted based on their tick-position in relation to the Reticule. Note-position will remain the same.<br/>
+						<br/>
+						Additive Copy and Additive Cut are <b>Ctrl-Shift-C</b> and <b>Ctrl-Shift-X</b>. These will add notes to the currently-copied notes, rather than overwriting them. Again, notes are copied and pasted with positions relative to the Reticule.<br/>
+						<br/>
+						Highlighted notes can be modified in various ways:<br/>
+						<ul>
+							<li>Duration: <b>Shift-Tab-Left</b>, <b>Shift-Tab-Right</b></li>
+							<li>Channel: <b>Shift-Tab-Up</b>, <b>Shift-Tab-Down</b></li>
+							<li>Move: <b>Tab-ArrowKeys</b> (tickwise movement is based on the Spacing value)</li>
+							<li>Velocity: <b>Shift-Dash</b>, <b>Shift-Equals</b>, <b>Shift-Tab-Dash</b>, <b>Shift-Tab-Equals</b></li>
+							<li>Humanize: <b>Shift-H</b></li>
+						</ul>
+						<br/>
+						<span class="well well-sm">Default cursor! <img src="img/cursor1.gif" /></span>
+						<span class="well well-sm">LeftClick cursor! <img src="img/cursor2.gif" /></span>
+						<span class="well well-sm">RightClick cursor! <img src="img/cursor3.gif" /></span><br/>
+						<br/>
+						Notes can also be highlighted with <b>LeftClick</b> or <b>LeftClick-Drag</b>, and additively highlighted with <b>Shift-LeftClick</b> or <b>Shift-LeftClick-Drag</b>.<br/>
+						<br/>
+						Using <b>RightClick</b> on the Sequence Grid will move the Reticule to the clicked position; <b>RightClick</b>ing on the Track Panel will make the clicked sequence into the active-sequence.
 					</p>
 
 				</div>
@@ -361,9 +436,13 @@
 				<div class="panel-body">
 
 					<p class="text">
-
-						todo: Play Mode
-						todo: Shadow Mode
+						Now that you know how to send MIDI-OUT through test-osc.pd, you might have become annoyed at Sect's tendency to record every note that you play! Well, there's a handy solution to that: <b>Escape</b> toggles Recording on-and-off.<br/>
+						<br/>
+						To play through the active sequence in realtime, hit <b>Space</b>.<br/>
+						<br/>
+						Sometimes it is useful to view multiple sequences at once. For this reason, Shadow Mode exists. In any sequence, hit <b>Backspace</b>, and that sequence's notes will be displayed as shadows underneath the notes of the active sequence. Shadow Mode can be applied to multiple sequences simultaneously.<br/>
+						<br/>
+						It can also be useful to see what shadows are underneath the current sequence's notes. So, to toggle whether to display or hide the active sequence's notes, hit <b>Shift-Backspace</b>.
 					</p>
 
 				</div>
