@@ -409,7 +409,7 @@
 							<li>Channel: <b>Shift-Tab-Up</b>, <b>Shift-Tab-Down</b></li>
 							<li>Move: <b>Tab-ArrowKeys</b> (tickwise movement is based on the Spacing value)</li>
 							<li>Velocity: <b>Shift-Dash</b>, <b>Shift-Equals</b>, <b>Shift-Tab-Dash</b>, <b>Shift-Tab-Equals</b></li>
-							<li>Humanize: <b>Shift-H</b></li>
+							<li>Humanize: <b>Shift-H</b></li> (strength is based on current global velocity)
 						</ul>
 						<br/>
 						<span class="well well-sm">Default cursor! <img src="img/cursor1.gif" /></span>
@@ -418,7 +418,10 @@
 						<br/>
 						Notes can also be highlighted with <b>LeftClick</b> or <b>LeftClick-Drag</b>, and additively highlighted with <b>Shift-LeftClick</b> or <b>Shift-LeftClick-Drag</b>.<br/>
 						<br/>
-						Using <b>RightClick</b> on the Sequence Grid will move the Reticule to the clicked position; <b>RightClick</b>ing on the Track Panel will make the clicked sequence into the active-sequence.
+						Using <b>RightClick</b> on the Sequence Grid will move the Reticule to the clicked position; <b>RightClick</b>ing on the Track Panel will make the clicked sequence into the active-sequence.<br/>
+						<br/>
+						Remember that all of Sect's commands are visible in the Commands List:<br/>
+						<a class="btn btn-primary btn-md" href="commands.html">Commands List</a>
 					</p>
 
 				</div>
@@ -460,7 +463,51 @@
 				<div class="panel-body">
 
 					<p class="text">
-
+						Generator Mode is a way to quickly generate a sequence of notes, within a given range of notes and ticks, as an alternative inroad to composition.<br/>
+						<br/>
+						Let's give it a whirl. Hit <b>Shift-Space</b> to enter Generator Mode. The reticule should change color.<br/>
+						<br/>
+						<img src="img/screen9.png" /><br/>
+						<br/>
+						To automatically generate a potentially-interesting sequence, hit any keyboard-piano key, or <b>Enter</b>. The sequence will be generated in the octave above the note, including the note itself.<br/>
+						<br/>
+						Here is an explanation of every sequence-generation parameter, and the key-commands to change them:<br/>
+						<br/>
+						"K-Species": <b>Shift-W</b> up, <b>Shift-Q</b> down.<br/>
+						The number of notes in a given 12-note scale. A lower value will produce chord-like behavior. Due to exponential wheel-data complexity, the maximum value is 8.<br/>
+						<br/>
+						"Scales": <b>Shift-S</b> up, <b>Shift-A</b> down.<br/>
+						The number of different scale-types to grab while generating the sequence.<br/>
+						<br/>
+						"Wheels": <b>Tab-S</b> up, <b>Tab-A</b> down.<br/>
+						A wheel controls the order in which a scale's notes are played. This value controls the number of different wheels used while generating a sequence.<br/>
+						<br/>
+						"Consonance": <b>Shift-X</b> up, <b>Shift-Z</b> down, <b>Tab-X</b> up 10, <b>Tab-Z</b> down 10.<br/>
+						How consonant or dissonant the selected scales will be. The more scales are pulled by the "Scales" value, though, the more they will diverge from the desired consonance rating.<br/>
+						<br/>
+						"Scale Switch": <b>Shift-R</b> up, <b>Shift-E</b> down, <b>Tab-R</b> up 10, <b>Tab-E</b> down 10.<br/>
+						How likely the generator is to switch to a different scale after any given note.<br/>
+						<br/>
+						"Wheel Switch": <b>Shift-F</b> up, <b>Shift-D</b> down, <b>Tab-F</b> up 10, <b>Tab-D</b> down 10.<br/>
+						How likely the generator is to switch to a different wheel after any given note.<br/>
+						<br/>
+						"Density": <b>Shift-V</b> up, <b>Shift-C</b> down, <b>Tab-V</b> up 10, <b>Tab-C</b> down 10.<br/>
+						Controls how densely-packed the sequence will be. Higher density, more notes.<br/>
+						<br/>
+						"Beat Stick": <b>Shift-Y</b> up, <b>Shift-T</b> down, <b>Tab-Y</b> up 10, <b>Tab-T</b> down 10.<br/>
+						Stickiness of major beat-factors. 100: fully prioritize major beats. 0: no special beat priority.<br/>
+						<br/>
+						"Beat Length": <b>Shift-H</b> up, <b>Shift-G</b> down, <b>Tab-H</b> up 10, <b>Tab-G</b> down 10.<br/>
+						Secondary beat-length value, decoupled from global TPQ, to be used only while generating the sequence. If you want the sequence to reflect the global TPQ, set this value to be identical to global TPQ.<br/>
+						<br/>
+						"Beat Bound": <b>Shift-N</b> up, <b>Shift-B</b> down.<br/>
+						Number of beats, in total, that the generated sequence will cover. Keep in mind that this refers to the Beat-Length-based beats, not the TPQ-based beats.<br/>
+						<br/>
+						"Beat Grain": <b>Shift-I</b> up, <b>Shift-U</b> down, <b>Tab-I</b> up 10, <b>Tab-U</b> down 10.<br/>
+						Granularity of ticks that are considered for note placement. Smaller number, more incidental; larger number, more beat-focused.<br/>
+						<br/>
+						"Note Grain": <b>Shift-K</b> up, <b>Shift-J</b> down, <b>Tab-K</b> up 10, <b>Tab-J</b> down 10.<br/>
+						Minimal possible note length. Smaller number, shorter average durations; larger number, longer average durations.
 					</p>
 
 				</div>
