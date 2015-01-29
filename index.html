@@ -29,7 +29,7 @@
 					It is designed to help users reach a point where they can use Sect for music composition.<br/>
 					<br/>
 					Useful Links:<br/>
-					<a class="btn btn-primary btn-lg" href="commands.html">Commands List</a>
+					<a class="btn btn-primary btn-lg" href="#cmds">Commands List</a>
 					<a class="btn btn-warning btn-lg" href="https://github.com/strangewarp/Sect">Source Code</a>
 				</p>
 
@@ -137,7 +137,7 @@
 						<br/>
 						<img src="img/screen1.png" /><br/>
 						<br/>
-						<span class="label label-success">Success!</span> Now let's set up the personalized settings, for save-load location and color theme.
+						<span class="label label-success">Success!</span> Now let's quickly cover how to personalize the default settings.
 					</p>
 
 				</div>
@@ -155,7 +155,7 @@
 				<div class="panel-body">
 
 					<p class="text">
-						Now that Sect has generated its data-files, we have to edit them slightly, so that Sect's internal save-load directory is correct.<br/>
+						Now that Sect has generated its data-files, you may want to customize their content at some point. Here's a quick explanation of how to do so.<br/>
 						<br/>
 						Close Sect itself, and...<br/>
 						<br/>
@@ -206,41 +206,19 @@
 
 						</div>
 
-						Inside this file, search for the line...<br/>
-						<br/>
-						<i>savepath = "C:/Users/Christian/Documents/MUSIC_STAGING/",</i><br/>
-						<br/>
-						...And change it to the directory that you want your MIDI savefiles to reside in. If you don't do this, it will try to save it in the directory I use for development; the chances that this default directory will work for you are minimal.<br/>
-						<br/>
-						Make sure that when you change this line, you leave the quotes, comma, and equals-sign the same, or else it will break the Lua table's syntax.<br/>
-						<br/>
-						Save the file, and close.<br/>
-						<br/>
-
-						<div class="row">
-							<div class="col-lg-5">
-								<div class="alert alert-info">
-									<h5>
-										<b>Note:</b>
-									</h5>
-									<p>
-										In user-prefs.lua, you can also change:<br/>
-										<ul>
-											<li>Hotseat names</li>
-											<li>Undo depth</li>
-											<li>Keyboard-piano keys</li>
-											<li>Command keychords</li>
-											<li>OSC port</li>
-											<li>Theme colors</li>
-											<li>Fonts</li>
-											<li>Background images</li>
-											<li>Element sizes</li>
-										</ul>
-										...But you don't have to be concerned about any of those, especially not right now. Just remember that there are a lot of possibilities here.
-									</p>
-								</div>
-							</div>
-						</div>
+						In user-prefs.lua, you can change:<br/>
+						<ul>
+							<li>Hotseat names</li>
+							<li>Undo depth</li>
+							<li>Keyboard-piano keys</li>
+							<li>Command keychords</li>
+							<li>MIDI-over-UDP port</li>
+							<li>Theme colors</li>
+							<li>Fonts</li>
+							<li>Background images</li>
+							<li>Element sizes</li>
+						</ul>
+						...But you don't have to be concerned about any of those, especially not right now. Just remember that there are a lot of possibilities for customization.
 
 					</p>
 
@@ -259,6 +237,8 @@
 				<div class="panel-body">
 
 					<p class="text">
+						If you still have Sect open, close it, so that it updates its settings.<br/>
+						<br/>
 						Open up Sect again.<br/>
 						<br/>
 						To create a new sequence, hit <b>Shift-Enter</b>. This will bring up many new elements in the Sequence-Grid panel.<br/>
@@ -275,9 +255,9 @@
 						<br>
 						<b>B</b> - Active tick. A tick is a sub-unit of a beat. The default value is 24 TPQ (Ticks Per Quarter-note), making for 96 ticks per beat. A "beat", in MIDI terms, is equivalent to a measure.<br/>
 						<br/>
-						<b>C</b> - Reticule. This marks the location where the active note and the active tick meet. Its rightmost triangle, which falls to the right of circle "C" in the example image, shows how long a note would be if it were created.<br/>
+						<b>C</b> - Reticule. This marks the location where the active note and the active tick meet. Its rightmost triangle shows how long a note would be if it were created.<br/>
 						<br/>
-						The reticule's default colors are: bright aqua while recording in Play Mode; mellow blue and white when not recording in Play Mode; bright yellow when recording in Generator Mode; and dusky yellow-brown when not recording in Generator Mode. You'll learn about modes later on.<br/>
+						The reticule's default colors are: bright aqua while recording in Play Mode; mellow white when not recording in Play Mode; bright yellow when recording in Generator Mode; dusky yellow-brown when not recording in Generator Mode; transparent red when recording in Cmd Mode; and transparent white when not recording in Cmd Mode. You'll learn about modes later on.<br/>
 						<br/>
 						<b>D</b> - Active sequence.<br/>
 						<br/>
@@ -311,9 +291,13 @@
 						<br/>
 						So now that we have a sequence, how do we save it?<br/>
 						<br/>
-						<b>Ctrl-S</b> will save it to the current hotseat. You can tab between hotseats with <b>Ctrl-number</b> and <b>Shift-Number</b>, and load the hotseat-file's contents with <b>Ctrl-O</b>.<br/>
+						<b>Ctrl-Shift-Tab-S</b> will save it to the current hotseat. This command requires a rather complex chord, in order to minimize the chances of anyone accidentally overwriting their hotseat-files.<br/>
 						<br/>
-						Remember that hotseat filenames can be changed in your user-prefs.lua.<br/>
+						You can tab between hotseats with <b>Ctrl-number</b> and <b>Shift-Number</b>, and load the hotseat-file's contents with <b>Ctrl-O</b>.<br/>
+						<br/>
+						You can also save to a non-hotseat location by entering Saveload Mode (<b>Ctrl-S</b>), typing a filename into the text-box, and then hitting <b>Ctrl-S</b> again. Similarly, you can load a non-hotseat file, while in Saveload Mode, by typing in a filename and hitting <b>Ctrl-O</b>.<br/>
+						<br/>
+						Default hotseat filenames can be changed in your user-prefs.lua. The hotseats-list will also modify itself dynamically, and change its hotseat ordering, as you save and load new files. This will not affect the ordering of the default hotseat names in your userprefs; they will revert to whatever order you have specified whenever Sect is opened.<br/>
 					</p>
 
 				</div>
@@ -333,7 +317,7 @@
 					<p class="text">
 						You may have noticed that, so far, Sect is silent. Because of LOVE2D's limitations, Sect cannot route MIDI on its own, but there is a Puredata script to help.<br/>
 						<br/>
-						Download <a href="https://github.com/strangewarp/SectTestOSCMIDI">SectTestOSCMIDI</a>, and open "test-osc.pd" with Pd-extended. You should see this:<br/>
+						Download <a href="https://github.com/strangewarp/SectMidiClient">SectMidiClient</a>, and open "sect-midi-client.pd" with Pd-extended. You should see this:<br/>
 						<br/>
 						<img src="img/screen6.png" /><br/>
 						<br/>
@@ -349,21 +333,10 @@
 						<br/>
 						Click the box to the right of "Output device 1", and a menu will pop up, displaying all currently-existing MIDI devices. Select your device of choice from the list; then, click "Apply" and "OK".<br/>
 						<br/>
-						Sect should now send MIDI-NOTEs to that MIDI device, as long as both Sect and test-osc.pd are running at the same time.
+						Sect should now send MIDI-NOTEs to that MIDI device, as long as both Sect and test-osc.pd are running at the same time.<br/>
+						<br/>
+						You can also set an "Input Device", which Sect will interpret as a MIDI controller. Any such Input Device will send notes to Sect while Sect is in Record Mode.
 					</p>
-
-					<div class="row">
-						<div class="col-lg-5">
-							<div class="alert alert-info">
-								<h5>
-									<b>Note:</b>
-								</h5>
-								<p>
-									If you have changed the "oscsend" port in user-prefs.lua, you will have to enter the corresponding port-number into test-osc.pd's "OSC-IN port" number-box when the script is launched.
-								</p>
-							</div>
-						</div>
-					</div>
 
 				</div>
 
@@ -384,13 +357,13 @@
 						<br/>
 						Undo and Redo are <b>Ctrl-Z</b> and <b>Ctrl-Y</b>, respectively.<br/>
 						<br/>
-						The default depth of undo-memory is 100 steps, but you can change this in user-prefs.lua.<br/>
+						The default depth of undo-memory is 250 steps, but you can change this in user-prefs.lua.<br/>
 						<br/>
 						A selection-window can be created with <b>Ctrl-Comma</b> and <b>Ctrl-Period</b>, and dismissed with <b>Ctrl-Slash</b>. All notes whose first tick falls within this window will be highlighted as the current selection.<br/>
 						<br/>
-						Copy is <b>Ctrl-C</b>, Cut is <b>Ctrl-X</b>, and Paste is <b>Ctrl-V</b>. Copy and Cut act upon the currently-highlighted notes.<br/>
+						Notes can also be highlighted with <b>LeftClick</b> or <b>LeftClick-Drag</b>, and additively highlighted with <b>Shift-LeftClick</b> or <b>Shift-LeftClick-Drag</b>.<br/>
 						<br/>
-						Additive Copy and Additive Cut are <b>Ctrl-Shift-C</b> and <b>Ctrl-Shift-X</b>. These will add the selected notes to the currently-copied notes, rather than overwriting them.<br/>
+						Copy is <b>Ctrl-C</b>, Cut is <b>Ctrl-X</b>, and Paste is <b>Ctrl-V</b>. Copy and Cut act upon the currently-highlighted notes.<br/>
 						<br/>
 						Repeating Paste is <b>Ctrl-Shift-V</b>, and it will repeat the copied notes for the duration of the entire active sequence, without overlap.<br/>
 						<br/>
@@ -400,21 +373,18 @@
 						<ul>
 							<li>Duration: <b>Shift-Tab-Left</b>, <b>Shift-Tab-Right</b></li>
 							<li>Channel: <b>Shift-Tab-Up</b>, <b>Shift-Tab-Down</b></li>
-							<li>Move: <b>Tab-ArrowKeys</b> (tickwise movement is based on the Spacing value)</li>
+							<li>Move: <b>Tab-ArrowKeys</b> (tickwise movement is based on the current Factor value)</li>
 							<li>Velocity: <b>Shift-Dash</b>, <b>Shift-Equals</b>, <b>Shift-Tab-Dash</b>, <b>Shift-Tab-Equals</b></li>
 							<li>Humanize: <b>Ctrl-H</b> (strength is based on current global velocity)</li>
 						</ul>
+						<br/>
+						To change the Factor value, in order to see where a given factor of sub-beats falls within each beat, and to control the distance that selected notes will be moved, type <b>Tab-Semicolon</b> and <b>Tab-Apostrophe</b>.<br/>
 						<br/>
 						<span class="well well-sm">Default cursor! <img src="img/cursor1.gif" /></span>
 						<span class="well well-sm">LeftClick cursor! <img src="img/cursor2.gif" /></span>
 						<span class="well well-sm">RightClick cursor! <img src="img/cursor3.gif" /></span><br/>
 						<br/>
-						Notes can also be highlighted with <b>LeftClick</b> or <b>LeftClick-Drag</b>, and additively highlighted with <b>Shift-LeftClick</b> or <b>Shift-LeftClick-Drag</b>.<br/>
-						<br/>
-						Using <b>RightClick</b> on the Sequence Grid will move the Reticule to the clicked position; <b>RightClick</b>ing on the Track Panel will make the clicked sequence into the active-sequence.<br/>
-						<br/>
-						Remember that all of Sect's commands are visible in the Commands List:<br/>
-						<a class="btn btn-primary btn-md" href="commands.html">Commands List</a>
+						Using <b>RightClick</b> on the Sequence Grid will move the Reticule to the clicked position (or to the first tick of any clicked note). <b>LeftClick or RightClick</b>ing on the Track Panel will make the clicked sequence into the active-sequence.
 					</p>
 
 				</div>
@@ -432,13 +402,17 @@
 				<div class="panel-body">
 
 					<p class="text">
-						Now that you know how to send MIDI-OUT through test-osc.pd, you might have become annoyed at Sect's tendency to record every note that you play! Well, there's a handy solution to that: <b>Escape</b> toggles Recording on-and-off.<br/>
+						Now that you know how to send MIDI-OUT through test-osc.pd, you might have become annoyed at Sect's tendency to record every note that you play! Well, there's an easy solution to that: <b>Escape</b> toggles Recording on-and-off.<br/>
 						<br/>
 						To play through the active sequence in realtime, hit <b>Space</b>.<br/>
 						<br/>
+						To toggle Quantize, which will make all entered notes stick to the closest Factor-ticks, type <b>Ctrl-Space</b>.<br/>
+						<br/>
 						Sometimes it is useful to view multiple sequences at once. For this reason, Shadow Mode exists. In any sequence, hit <b>Backspace</b>, and that sequence's notes will be displayed as shadows underneath the notes of the active sequence. Shadow Mode can be applied to multiple sequences simultaneously.<br/>
 						<br/>
-						It can also be useful to see what shadows are underneath the current sequence's notes. So, to toggle whether to display or hide the active sequence's notes, hit <b>Shift-Backspace</b>.
+						It can also be useful to see what shadows are underneath the current sequence's notes. So, to toggle whether to display or hide the active sequence's notes, hit <b>Shift-Backspace</b>.<br/>
+						<br/>
+						To toggle whether channel-names are displayed on notes, hit <b>`</b> (backtick).
 					</p>
 
 				</div>
@@ -503,6 +477,707 @@
 						Minimal possible note length. Smaller number, shorter average durations; larger number, longer average durations.
 					</p>
 
+				</div>
+
+			</div>
+
+		</div>
+
+		<div class="container">
+
+			<div class="jumbotron">
+
+				<h1>
+					<a name="cmds">Sect: Commands List</a>
+				</h1>
+
+				<p>
+					This is a list of Sect's default key-commands.<br/>
+					<br/>
+					Key:
+					<span class="label label-primary">Entry Mode</span>
+					<span class="label label-warning">Generator Mode</span>
+					<span class="label label-danger">Cmd Mode</span>
+					<span class="label label-success">Save Mode</span>
+				</p>
+
+				<div class="row">
+					<div class="col-lg-10">
+						<div class="bs-component">
+
+							<table class="table table-striped table-hover">
+
+								<thead>
+									<tr>
+										<th>Type</th>
+										<th>Actions</th>
+										<th>Keys</th>
+									</tr>
+								</thead>
+
+								<tbody>
+
+									<tr>
+										<td>Save / Load</td>
+										<td>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span> <span class="label label-danger">C</span>
+											Tab To Hotseats 1-10<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span> <span class="label label-danger">C</span>
+											Tab To Hotseats 11-20<br/>
+											<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span> <span class="label label-danger">C</span>
+											Load Hotseat File<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span> <span class="label label-danger">C</span>
+											Save To Hotseat<br/>
+											<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span> <span class="label label-danger">C</span>
+											Toggle Save-Panel<br/>
+											<span class="label label-success">S</span>
+											Escape Save-Panel<br/>
+											<br/>
+											<span class="label label-success">S</span>
+											Save To Named File<br/>
+											<span class="label label-success">S</span>
+											Load Named File<br/>
+											<span class="label label-success">S</span>
+											Set Save-Path<br/>
+										</td>
+										<td>
+											<span class="label label-info">Ctrl</span><span class="label label-info">number</span><br/>
+											<span class="label label-info">Shift</span><span class="label label-info">number</span><br/>
+											<br/>
+											<span class="label label-info">Ctrl</span><span class="label label-info">O</span><br/>
+											<span class="label label-info">Ctrl</span><span class="label label-info">Shift</span><span class="label label-info">Tab</span><span class="label label-info">S</span><br/>
+											<br/>
+											<span class="label label-info">Ctrl</span><span class="label label-info">S</span><br/>
+											<span class="label label-info">Escape</span><br/>
+											<br/>
+											<span class="label label-info">Ctrl</span><span class="label label-info">S</span><br/>
+											<span class="label label-info">Ctrl</span><span class="label label-info">O</span><br/>
+											<span class="label label-info">Ctrl</span><span class="label label-info">Shift</span><span class="label label-info">P</span>
+										</td>
+									</tr>
+
+									<tr>
+										<td>View / Mode</td>
+										<td>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span> <span class="label label-danger">C</span>
+											Toggle Overlay<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span> <span class="label label-danger">C</span>
+											Toggle Note-Drawing<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span> <span class="label label-danger">C</span>
+											Toggle Record<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span> <span class="label label-danger">C</span>
+											Toggle Play<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span> <span class="label label-danger">C</span>
+											Toggle Generator Mode<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span> <span class="label label-danger">C</span>
+											Toggle Cmd Mode<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span> <span class="label label-danger">C</span>
+											Toggle Entry-Quantize<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span> <span class="label label-danger">C</span>
+											Toggle Visible Channel Numbers
+										</td>
+										<td>
+											<span class="label label-info">Backspace</span><br/>
+											<span class="label label-info">Shift</span><span class="label label-info">Backspace</span><br/>
+											<span class="label label-info">Escape</span><br/>
+											<span class="label label-info">Space</span><br/>
+											<span class="label label-info">Shift</span><span class="label label-info">Space</span><br/>
+											<span class="label label-info">Tab</span><span class="label label-info">Space</span><br/>
+											<span class="label label-info">Ctrl</span><span class="label label-info">Space</span><br/>
+											<span class="label label-info">`</span>
+										</td>
+									</tr>
+
+									<tr>
+										<td>Mouse</td>
+										<td>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span>
+											Select<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span>
+											Additive Select<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span>
+											Select Window<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span>
+											Additive Select Window<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span>
+											Move<br/>
+										</td>
+										<td>
+											<span class="label label-info">LeftClick</span><br/>
+											<span class="label label-info">Shift</span><span class="label label-info">LeftClick</span><br/>
+											<span class="label label-info">LeftClick</span><span class="label label-info">Drag</span><br/>
+											<span class="label label-info">Shift</span><span class="label label-info">LeftClick</span><span class="label label-info">Drag</span><br/>
+											<span class="label label-info">RightClick</span>
+										</td>
+									</tr>
+
+									<tr>
+										<td>Movement</td>
+										<td>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span> <span class="label label-danger">C</span>
+											Pointer Up<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span> <span class="label label-danger">C</span>
+											Pointer Down<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span>
+											Pointer Up Octave<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span>
+											Pointer Down Octave<br/>
+											<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span> <span class="label label-danger">C</span>
+											Pointer Left<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span> <span class="label label-danger">C</span>
+											Pointer Right<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span> <span class="label label-danger">C</span>
+											Pointer Left Beat<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span> <span class="label label-danger">C</span>
+											Pointer Right Beat<br/>
+											<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span>
+											Pointer To Prev Note<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span>
+											Pointer To Next Note<br/>
+											<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span> <span class="label label-danger">C</span>
+											Pointer To First Tick<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span> <span class="label label-danger">C</span>
+											Pointer To Opposite Tick<br/>
+											<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span> <span class="label label-danger">C</span>
+											Seq Tab Up<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span> <span class="label label-danger">C</span>
+											Seq Tab Down<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span> <span class="label label-danger">C</span>
+											Seq Tab Up 10<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span> <span class="label label-danger">C</span>
+											Seq Tab Down 10
+										</td>
+										<td>
+											<span class="label label-info">Up</span><br/>
+											<span class="label label-info">Down</span><br/>
+											<span class="label label-info">Shift</span><span class="label label-info">Up</span><br/>
+											<span class="label label-info">Shift</span><span class="label label-info">Down</span><br/>
+											<br/>
+											<span class="label label-info">Left</span><br/>
+											<span class="label label-info">Right</span><br/>
+											<span class="label label-info">Shift</span><span class="label label-info">Left</span><br/>
+											<span class="label label-info">Shift</span><span class="label label-info">Right</span><br/>
+											<br/>
+											<span class="label label-info">Ctrl</span><span class="label label-info">Left</span><br/>
+											<span class="label label-info">Ctrl</span><span class="label label-info">Right</span><br/>
+											<br/>
+											<span class="label label-info">Home</span><br/>
+											<span class="label label-info">End</span><br/>
+											<br/>
+											<span class="label label-info">PageUp</span><br/>
+											<span class="label label-info">PageDown</span><br/>
+											<span class="label label-info">Shift</span><span class="label label-info">PageUp</span><br/>
+											<span class="label label-info">Shift</span><span class="label label-info">PageDown</span>
+										</td>
+									</tr>
+
+									<tr>
+										<td>Zoom</td>
+										<td>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span> <span class="label label-danger">C</span>
+											Tick Axis Zoom In<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span> <span class="label label-danger">C</span>
+											Tick Axis Zoom Out<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span> <span class="label label-danger">C</span>
+											Note Axis Zoom In<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span> <span class="label label-danger">C</span>
+											Note Axis Zoom Out
+										</td>
+										<td>
+											<span class="label label-info">Ctrl</span><span class="label label-info">Shift</span><span class="label label-info">Right</span>
+											or <span class="label label-info">MouseWheel</span><br/>
+											<span class="label label-info">Ctrl</span><span class="label label-info">Shift</span><span class="label label-info">Left</span>
+											or <span class="label label-info">MouseWheel</span><br/>
+											<span class="label label-info">Shift</span><span class="label label-info">Ctrl</span><span class="label label-info">Up</span><br/>
+											<span class="label label-info">Shift</span><span class="label label-info">Ctrl</span><span class="label label-info">Down</span>
+										</td>
+									</tr>
+
+									<tr>
+										<td>Undo / Redo</td>
+										<td>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span> <span class="label label-danger">C</span>
+											Undo<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span> <span class="label label-danger">C</span>
+											Redo
+										</td>
+										<td>
+											<span class="label label-info">Ctrl</span><span class="label label-info">Z</span><br/>
+											<span class="label label-info">Ctrl</span><span class="label label-info">Y</span><br/>
+										</td>
+									</tr>
+
+									<tr>
+										<td>Selection</td>
+										<td>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span>
+											Left-Select<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span>
+											Right-Select<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span>
+											Clear Select Range<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span>
+											Clear Selection<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span>
+											Select All<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span>
+											Select Channel<br/>
+										</td>
+										<td>
+											<span class="label label-info">Ctrl</span><span class="label label-info">,</span><br/>
+											<span class="label label-info">Ctrl</span><span class="label label-info">.</span><br/>
+											<span class="label label-info">Ctrl</span><span class="label label-info">/</span><br/>
+											<span class="label label-info">Ctrl</span><span class="label label-info">Shift</span><span class="label label-info">A</span>
+											<span class="label label-info">Ctrl</span><span class="label label-info">A</span><br/>
+											<span class="label label-info">Ctrl</span><span class="label label-info">N</span><br/>
+										</td>
+									</tr>
+
+									<tr>
+										<td>Copy / Paste</td>
+										<td>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span>
+											Copy<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span>
+											Cut<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span>
+											Paste<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span>
+											Repeating Paste<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span>
+											Paste From Text Mono<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span>
+											Paste From Text Poly<br/>
+										</td>
+										<td>
+											<span class="label label-info">Ctrl</span><span class="label label-info">C</span><br/>
+											<span class="label label-info">Ctrl</span><span class="label label-info">X</span><br/>
+											<span class="label label-info">Ctrl</span><span class="label label-info">V</span><br/>
+											<span class="label label-info">Ctrl</span><span class="label label-info">Shift</span><span class="label label-info">V</span><br/>
+											<span class="label label-info">Ctrl</span><span class="label label-info">M</span><br/>
+											<span class="label label-info">Ctrl</span><span class="label label-info">P</span>
+										</td>
+									</tr>
+
+									<tr>
+										<td>Modify Notes</td>
+										<td>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span> <span class="label label-danger">C</span>
+											Insert Pointer Note<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span>
+											Insert Piano Note<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span> <span class="label label-danger">C</span>
+											Delete Note<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span> <span class="label label-danger">C</span>
+											Delete Tick Notes<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span>
+											Delete Pitch Notes<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span> <span class="label label-danger">C</span>
+											Delete Beat Notes
+										</td>
+										<td>
+											<span class="label label-info">Return</span><br/>
+											<span class="label label-info">zsxdcvgbhnjm,lq2w3er5t6y7ui9o0p</span><br/>
+											<span class="label label-info">Delete</span><br/>
+											<span class="label label-info">Shift</span><span class="label label-info">Delete</span><br/>
+											<span class="label label-info">Ctrl</span><span class="label label-info">Delete</span><br/>
+											<span class="label label-info">Ctrl</span><span class="label label-info">Shift</span><span class="label label-info">Delete</span>
+										</td>
+									</tr>
+
+									<tr>
+										<td>Modify Ticks</td>
+										<td>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span> <span class="label label-danger">C</span>
+											Insert Ticks<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span> <span class="label label-danger">C</span>
+											Remove Ticks<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span> <span class="label label-danger">C</span>
+											Multiply Ticks
+										</td>
+										<td>
+											<span class="label label-info">Tab</span><span class="label label-info">Return</span><br/>
+											<span class="label label-info">Tab</span><span class="label label-info">Delete</span><br/>
+											<span class="label label-info">Shift</span><span class="label label-info">Tab</span><span class="label label-info">Return</span>
+										</td>
+									</tr>
+
+									<tr>
+										<td>Modify Seqs</td>
+										<td>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span> <span class="label label-danger">C</span>
+											Insert Seq<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span> <span class="label label-danger">C</span>
+											Remove Seq<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span> <span class="label label-danger">C</span>
+											Move Seq Up<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span> <span class="label label-danger">C</span>
+											Move Seq Down
+										</td>
+										<td>
+											<span class="label label-info">Shift</span><span class="label label-info">Return</span><br/>
+											<span class="label label-info">Ctrl</span><span class="label label-info">Shift</span><span class="label label-info">Return</span><br/>
+											<span class="label label-info">Ctrl</span><span class="label label-info">PageUp</span><br/>
+											<span class="label label-info">Ctrl</span><span class="label label-info">PageDown</span>
+										</td>
+									</tr>
+
+									<tr>
+										<td>Change Global Values</td>
+										<td>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span> <span class="label label-danger">C</span>
+											Channel Up<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span> <span class="label label-danger">C</span>
+											Channel Down<br/>
+											<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span> <span class="label label-danger">C</span>
+											Spacing Up<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span> <span class="label label-danger">C</span>
+											Spacing Down<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span> <span class="label label-danger">C</span>
+											Spacing Up Multiple<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span> <span class="label label-danger">C</span>
+											Spacing Down Multiple<br/>
+											<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span>
+											Velocity Up<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span>
+											Velocity Down<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span>
+											Velocity Up 10<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span>
+											Velocity Down 10<br/>
+											<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span>
+											Duration Up<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span>
+											Duration Down<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span>
+											Duration Up Multiple<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span>
+											Duration Down Multiple<br/>
+											<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span> <span class="label label-danger">C</span>
+											BPM Up<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span> <span class="label label-danger">C</span>
+											BPM Down<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span> <span class="label label-danger">C</span>
+											BPM Up 10<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span> <span class="label label-danger">C</span>
+											BPM Down 10<br/>
+											<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span> <span class="label label-danger">C</span>
+											TPQ Up<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span> <span class="label label-danger">C</span>
+											TPQ Down<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span> <span class="label label-danger">C</span>
+											TPQ Up Multiple<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span> <span class="label label-danger">C</span>
+											TPQ Down Multiple<br/>
+											<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span> <span class="label label-danger">C</span>
+											Factor Up<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span> <span class="label label-danger">C</span>
+											Factor Down<br/>
+											<br/>
+											<span class="label label-danger">C</span>
+											Cmd Type Up<br/>
+											<span class="label label-danger">C</span>
+											Cmd Type Down<br/>
+											<br/>
+											<span class="label label-danger">C</span>
+											Cmd Byte1 Up<br/>
+											<span class="label label-danger">C</span>
+											Cmd Byte1 Down<br/>
+											<span class="label label-danger">C</span>
+											Cmd Byte1 Up 10<br/>
+											<span class="label label-danger">C</span>
+											Cmd Byte1 Down 10<br/>
+											<br/>
+											<span class="label label-danger">C</span>
+											Cmd Byte2 Up<br/>
+											<span class="label label-danger">C</span>
+											Cmd Byte2 Down<br/>
+											<span class="label label-danger">C</span>
+											Cmd Byte2 Up 10<br/>
+											<span class="label label-danger">C</span>
+											Cmd Byte2 Down 10
+										</td>
+										<td>
+											<span class="label label-info">Ctrl</span><span class="label label-info">]</span><br/>
+											<span class="label label-info">Ctrl</span><span class="label label-info">[</span><br/>
+											<br/>
+											<span class="label label-info">'</span><br/>
+											<span class="label label-info">;</span><br/>
+											<span class="label label-info">Shift</span><span class="label label-info">'</span><br/>
+											<span class="label label-info">Shift</span><span class="label label-info">;</span><br/>
+											<br/>
+											<span class="label label-info">=</span><br/>
+											<span class="label label-info">-</span><br/>
+											<span class="label label-info">Shift</span><span class="label label-info">=</span><br/>
+											<span class="label label-info">Shift</span><span class="label label-info">-</span><br/>
+											<br/>
+											<span class="label label-info">]</span><br/>
+											<span class="label label-info">[</span><br/>
+											<span class="label label-info">Shift</span><span class="label label-info">]</span><br/>
+											<span class="label label-info">Shift</span><span class="label label-info">[</span><br/>
+											<br/>
+											<span class="label label-info">/</span><br/>
+											<span class="label label-info">.</span><br/>
+											<span class="label label-info">Shift</span><span class="label label-info">/</span><br/>
+											<span class="label label-info">Shift</span><span class="label label-info">.</span><br/>
+											<br/>
+											<span class="label label-info">Tab</span><span class="label label-info">/</span><br/>
+											<span class="label label-info">Tab</span><span class="label label-info">.</span><br/>
+											<span class="label label-info">Shift</span><span class="label label-info">Tab</span><span class="label label-info">/</span><br/>
+											<span class="label label-info">Shift</span><span class="label label-info">Tab</span><span class="label label-info">.</span><br/>
+											<br/>
+											<span class="label label-info">Tab</span><span class="label label-info">'</span><br/>
+											<span class="label label-info">Tab</span><span class="label label-info">;</span><br/>
+											<br/>
+											<span class="label label-info">Shift</span><span class="label label-info">W</span><br/>
+											<span class="label label-info">Shift</span><span class="label label-info">Q</span><br/>
+											<br/>
+											<span class="label label-info">Shift</span><span class="label label-info">S</span><br/>
+											<span class="label label-info">Shift</span><span class="label label-info">A</span><br/>
+											<span class="label label-info">Shift</span><span class="label label-info">Tab</span><span class="label label-info">S</span><br/>
+											<span class="label label-info">Shift</span><span class="label label-info">Tab</span><span class="label label-info">A</span><br/>
+											<br/>
+											<span class="label label-info">Shift</span><span class="label label-info">X</span><br/>
+											<span class="label label-info">Shift</span><span class="label label-info">Z</span><br/>
+											<span class="label label-info">Shift</span><span class="label label-info">Tab</span><span class="label label-info">X</span><br/>
+											<span class="label label-info">Shift</span><span class="label label-info">Tab</span><span class="label label-info">Z</span>
+										</td>
+									</tr>
+
+									<tr>
+										<td>Change Selected Note Values</td>
+										<td>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span>
+											Increase Duration<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span>
+											Decrease Duration<br/>
+											<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span>
+											Increase Channel<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span>
+											Decrease Channel<br/>
+											<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span>
+											Move Note Up 1<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span>
+											Move Note Down 1<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span>
+											Move Note Up 12<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span>
+											Move Note Down 12<br/>
+											<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span>
+											Move Note Left<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span>
+											Move Note Right<br/>
+											<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span>
+											Increase Velocity<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span>
+											Decrease Velocity<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span>
+											Increase Velocity 10<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span>
+											Decrease Velocity 10<br/>
+											<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span>
+											Humanize<br/>
+											<span class="label label-primary">E</span> <span class="label label-warning">G</span>
+											Quantize<br/>
+										</td>
+										<td>
+											<span class="label label-info">Shift</span><span class="label label-info">Tab</span><span class="label label-info">Right</span><br/>
+											<span class="label label-info">Shift</span><span class="label label-info">Tab</span><span class="label label-info">Left</span><br/>
+											<br/>
+											<span class="label label-info">Shift</span><span class="label label-info">Tab</span><span class="label label-info">Up</span><br/>
+											<span class="label label-info">Shift</span><span class="label label-info">Tab</span><span class="label label-info">Down</span><br/>
+											<br/>
+											<span class="label label-info">Tab</span><span class="label label-info">Up</span><br/>
+											<span class="label label-info">Tab</span><span class="label label-info">Down</span><br/>
+											<span class="label label-info">Shift</span><span class="label label-info">Tab</span><span class="label label-info">Up</span><br/>
+											<span class="label label-info">Shift</span><span class="label label-info">Tab</span><span class="label label-info">Down</span><br/>
+											<br/>
+											<span class="label label-info">Tab</span><span class="label label-info">Left</span><br/>
+											<span class="label label-info">Tab</span><span class="label label-info">Right</span><br/>
+											<br/>
+											<span class="label label-info">Tab</span><span class="label label-info">=</span><br/>
+											<span class="label label-info">Tab</span><span class="label label-info">-</span><br/>
+											<span class="label label-info">Shift</span><span class="label label-info">Tab</span><span class="label label-info">=</span><br/>
+											<span class="label label-info">Shift</span><span class="label label-info">Tab</span><span class="label label-info">-</span><br/>
+											<br/>
+											<span class="label label-info">Ctrl</span><span class="label label-info">H</span><br/>
+											<span class="label label-info">Ctrl</span><span class="label label-info">U</span><br/>
+										</td>
+									</tr>
+
+									<tr>
+										<td>Generator Mode</td>
+										<td>
+											<span class="label label-warning">G</span>
+											K-Species Up<br/>
+											<span class="label label-warning">G</span>
+											K-Species Down<br/>
+											<br/>
+											<span class="label label-warning">G</span>
+											Scales Up<br/>
+											<span class="label label-warning">G</span>
+											Scales Down<br/>
+											<br/>
+											<span class="label label-warning">G</span>
+											Wheels Up<br/>
+											<span class="label label-warning">G</span>
+											Wheels Down<br/>
+											<br/>
+											<span class="label label-warning">G</span>
+											Consonance Up<br/>
+											<span class="label label-warning">G</span>
+											Consonance Down<br/>
+											<span class="label label-warning">G</span>
+											Consonance Up 10<br/>
+											<span class="label label-warning">G</span>
+											Consonance Down 10<br/>
+											<br/>
+											<span class="label label-warning">G</span>
+											Scale Switch Up<br/>
+											<span class="label label-warning">G</span>
+											Scale Switch Down<br/>
+											<span class="label label-warning">G</span>
+											Scale Switch Up 10<br/>
+											<span class="label label-warning">G</span>
+											Scale Switch Down 10<br/>
+											<br/>
+											<span class="label label-warning">G</span>
+											Wheel Switch Up<br/>
+											<span class="label label-warning">G</span>
+											Wheel Switch Down<br/>
+											<span class="label label-warning">G</span>
+											Wheel Switch Up 10<br/>
+											<span class="label label-warning">G</span>
+											Wheel Switch Down 10<br/>
+											<br/>
+											<span class="label label-warning">G</span>
+											Density Up<br/>
+											<span class="label label-warning">G</span>
+											Density Down<br/>
+											<span class="label label-warning">G</span>
+											Density Up 10<br/>
+											<span class="label label-warning">G</span>
+											Density Down 10<br/>
+											<br/>
+											<span class="label label-warning">G</span>
+											Beat Stick Up<br/>
+											<span class="label label-warning">G</span>
+											Beat Stick Down<br/>
+											<span class="label label-warning">G</span>
+											Beat Stick Up 10<br/>
+											<span class="label label-warning">G</span>
+											Beat Stick Down 10<br/>
+											<br/>
+											<span class="label label-warning">G</span>
+											Beat Length Up<br/>
+											<span class="label label-warning">G</span>
+											Beat Length Down<br/>
+											<span class="label label-warning">G</span>
+											Beat Length Up 10<br/>
+											<span class="label label-warning">G</span>
+											Beat Length Down 10<br/>
+											<br/>
+											<span class="label label-warning">G</span>
+											Beat Bound Up<br/>
+											<span class="label label-warning">G</span>
+											Beat Bound Down<br/>
+											<br/>
+											<span class="label label-warning">G</span>
+											Beat Grain Up<br/>
+											<span class="label label-warning">G</span>
+											Beat Grain Down<br/>
+											<span class="label label-warning">G</span>
+											Beat Grain Up 10<br/>
+											<span class="label label-warning">G</span>
+											Beat Grain Down 10<br/>
+											<br/>
+											<span class="label label-warning">G</span>
+											Note Grain Up<br/>
+											<span class="label label-warning">G</span>
+											Note Grain Down<br/>
+											<span class="label label-warning">G</span>
+											Note Grain Up 10<br/>
+											<span class="label label-warning">G</span>
+											Note Grain Down 10
+										</td>
+										<td>
+											<span class="label label-info">Shift</span><span class="label label-info">W</span><br/>
+											<span class="label label-info">Shift</span><span class="label label-info">Q</span><br/>
+											<br/>
+											<span class="label label-info">Shift</span><span class="label label-info">S</span><br/>
+											<span class="label label-info">Shift</span><span class="label label-info">A</span><br/>
+											<br/>
+											<span class="label label-info">Tab</span><span class="label label-info">S</span><br/>
+											<span class="label label-info">Tab</span><span class="label label-info">A</span><br/>
+											<br/>
+											<span class="label label-info">Shift</span><span class="label label-info">X</span><br/>
+											<span class="label label-info">Shift</span><span class="label label-info">Z</span><br/>
+											<span class="label label-info">Tab</span><span class="label label-info">X</span><br/>
+											<span class="label label-info">Tab</span><span class="label label-info">Z</span><br/>
+											<br/>
+											<span class="label label-info">Shift</span><span class="label label-info">R</span><br/>
+											<span class="label label-info">Shift</span><span class="label label-info">E</span><br/>
+											<span class="label label-info">Tab</span><span class="label label-info">R</span><br/>
+											<span class="label label-info">Tab</span><span class="label label-info">E</span><br/>
+											<br/>
+											<span class="label label-info">Shift</span><span class="label label-info">F</span><br/>
+											<span class="label label-info">Shift</span><span class="label label-info">D</span><br/>
+											<span class="label label-info">Tab</span><span class="label label-info">F</span><br/>
+											<span class="label label-info">Tab</span><span class="label label-info">D</span><br/>
+											<br/>
+											<span class="label label-info">Shift</span><span class="label label-info">V</span><br/>
+											<span class="label label-info">Shift</span><span class="label label-info">C</span><br/>
+											<span class="label label-info">Tab</span><span class="label label-info">V</span><br/>
+											<span class="label label-info">Tab</span><span class="label label-info">C</span><br/>
+											<br/>
+											<span class="label label-info">Shift</span><span class="label label-info">Y</span><br/>
+											<span class="label label-info">Shift</span><span class="label label-info">T</span><br/>
+											<span class="label label-info">Tab</span><span class="label label-info">Y</span><br/>
+											<span class="label label-info">Tab</span><span class="label label-info">T</span><br/>
+											<br/>
+											<span class="label label-info">Shift</span><span class="label label-info">H</span><br/>
+											<span class="label label-info">Shift</span><span class="label label-info">G</span><br/>
+											<span class="label label-info">Tab</span><span class="label label-info">H</span><br/>
+											<span class="label label-info">Tab</span><span class="label label-info">G</span><br/>
+											<br/>
+											<span class="label label-info">Shift</span><span class="label label-info">N</span><br/>
+											<span class="label label-info">Shift</span><span class="label label-info">B</span><br/>
+											<br/>
+											<span class="label label-info">Shift</span><span class="label label-info">I</span><br/>
+											<span class="label label-info">Shift</span><span class="label label-info">U</span><br/>
+											<span class="label label-info">Tab</span><span class="label label-info">I</span><br/>
+											<span class="label label-info">Tab</span><span class="label label-info">U</span><br/>
+											<br/>
+											<span class="label label-info">Shift</span><span class="label label-info">K</span><br/>
+											<span class="label label-info">Shift</span><span class="label label-info">J</span><br/>
+											<span class="label label-info">Tab</span><span class="label label-info">K</span><br/>
+											<span class="label label-info">Tab</span><span class="label label-info">J</span>
+										</td>
+									</tr>
+
+								</tbody>
+
+							</table>
+
+						</div>
+					</div>
 				</div>
 
 			</div>
